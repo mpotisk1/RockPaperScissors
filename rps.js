@@ -103,3 +103,7 @@ function playGame(){
     
 }
 playGame();
+
+function testAdd(){
+    //this is a function so i can test git add and git revert.
+};
