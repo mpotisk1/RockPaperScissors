@@ -5,14 +5,15 @@ let computerScore = 0;
 
 let computerChoice = "";
 let humanChoice = "";
+let roundNum = 0;
 
 const rockButton = document.getElementById('rock');
 const paperButton = document.getElementById('paper');
 const scisButton = document.getElementById('scissors');
 
-rockButton.onclick = () => humanChoice = "rock";
-paperButton.onclick = ()=> humanChoice = "paper";
-scisButton.onclick = () => humanChoice ="scissors";
+rockButton.onclick = () => {humanChoice = "rock", playRound()};
+paperButton.onclick = () => {humanChoice = "paper", playRound()};
+scisButton.onclick = () => {humanChoice = "scissors", playRound()};
 
 
 
@@ -41,19 +42,11 @@ function getComputerChoice(){
     return computerChoice;
 };
 
-/* function getHumanChoice(){
-    let humanChoice = prompt("type 'rock' 'paper' or 'scissors'");
-   // console.log(humanChoice);
-    return(humanChoice);
-
-}*/
-
 
 
 function playRound(){
      //humanChoice = getHumanChoice();
      computerChoice = getComputerChoice();
-if (humanChoice.length != 0){
 
 if (computerChoice == "rock"){
     if (humanChoice == "rock"){
@@ -91,16 +84,19 @@ else if (computerChoice == "scissors"){
     else {console.log("Tie!")
     }
 }
+round();
+playGame();
+roundNum++;
 }
-else{};
+
+
+function round(){
+    console.log(humanChoice + " Vs " + computerChoice + "...." + " The Score is now " + humanScore + " to " + computerScore);
 }
 function playGame(){
-
-    for (i = 0; i <= 5; i++){
-      
-        playRound();
-        console.log(humanChoice + " Vs " + computerChoice + "...." + " The Score is now " + humanScore + " to " + computerScore);
-     }
+if (roundNum === 5){
+       
+     
         if (humanScore > computerScore) {
             console.log("Good Job! You have Defeated AI!")
         }
@@ -111,7 +107,8 @@ function playGame(){
             console.log("A tie after 5 rounds? One more. This is your chance to Redeem yourself.");
             playRound();
         }
-    
+    return;
+    }
     
 }
-playGame();
+//playGame();
