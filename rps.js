@@ -6,6 +6,15 @@ let computerScore = 0;
 let computerChoice = "";
 let humanChoice = "";
 
+const rockButton = document.getElementById('rock');
+const paperButton = document.getElementById('paper');
+const scisButton = document.getElementById('scissors');
+
+rockButton.onclick = () => humanChoice = "rock";
+paperButton.onclick = ()=> humanChoice = "paper";
+scisButton.onclick = () => humanChoice ="scissors";
+
+
 
 function getComputerChoice(){
     let computerNumChoice = 0;
@@ -32,18 +41,19 @@ function getComputerChoice(){
     return computerChoice;
 };
 
-function getHumanChoice(){
+/* function getHumanChoice(){
     let humanChoice = prompt("type 'rock' 'paper' or 'scissors'");
    // console.log(humanChoice);
     return(humanChoice);
 
-}
+}*/
 
 
 
 function playRound(){
-     humanChoice = getHumanChoice();
+     //humanChoice = getHumanChoice();
      computerChoice = getComputerChoice();
+if (humanChoice.length != 0){
 
 if (computerChoice == "rock"){
     if (humanChoice == "rock"){
@@ -82,13 +92,15 @@ else if (computerChoice == "scissors"){
     }
 }
 }
+else{};
+}
 function playGame(){
 
-
-        for (i = 0; i <= 5; i++){
+    for (i = 0; i <= 5; i++){
+      
         playRound();
         console.log(humanChoice + " Vs " + computerChoice + "...." + " The Score is now " + humanScore + " to " + computerScore);
-    }
+     }
         if (humanScore > computerScore) {
             console.log("Good Job! You have Defeated AI!")
         }
